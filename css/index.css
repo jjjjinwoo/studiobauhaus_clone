@@ -1,0 +1,116 @@
+@charset "utf-8";
+@import url(https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* 공통 */
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+a {
+  color: black;
+  text-decoration: none;
+  background: linear-gradient(90deg, transparent, transparent),
+    linear-gradient(90deg, currentColor, currentColor);
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.1em, 0 0.1em;
+  transition: 0.5s;
+  line-height: 1.2;
+}
+a:hover {
+  background-size: 0 0.1em, 100% 0.1em;
+}
+button {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background-color: transparent;
+}
+
+/* 헤더 */
+
+header {
+  height: 82px;
+  border-bottom: 1px solid black;
+  padding: 0 44px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: white;
+}
+header .logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+header .logo h1 {
+  line-height: 100%;
+  font-size: 22px;
+  font-weight: 400;
+}
+header > nav {
+  width: 50%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header ul {
+  display: flex;
+  column-gap: 2em;
+}
+header li a {
+  font-size: 13px;
+}
+header .right > a {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 사이드바 */
+
+.sidebar {
+  width: 44px;
+  height: 100vh;
+  position: fixed;
+  background-color: white;
+  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .blank {
+  height: 82px;
+}
+.sidebar button {
+  padding: 18px 0;
+  border-bottom: 1px solid black;
+  padding-bottom: 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.sidebar button.on {
+  flex: 1;
+  background-color: black;
+  color: white;
+}
+.sidebar button span {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  text-align: left;
+  font-size: 14px;
+}
+
+/* 섹션1 */
+
+.sec1 {
+  background-color: aqua;
+  width: 100%;
+  min-height: calc(100vh);
+}
+.sec1 .text_box h2 {
+  font-size: 12.5vw;
+}
