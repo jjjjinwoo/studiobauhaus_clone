@@ -80,6 +80,7 @@ header .right > a {
   border-right: 1px solid black;
   display: flex;
   flex-direction: column;
+  z-index: 99;
 }
 .sidebar .blank {
   height: 82px;
@@ -91,11 +92,13 @@ header .right > a {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  cursor: pointer;
 }
 .sidebar button.on {
   flex: 1;
   background-color: black;
   color: white;
+  cursor: auto;
 }
 .sidebar button span {
   writing-mode: vertical-lr;
@@ -107,10 +110,375 @@ header .right > a {
 /* 섹션1 */
 
 .sec1 {
-  background-color: aqua;
-  width: 100%;
+  background-color: rgb(255, 255, 255);
+}
+.sec1 .container {
+  width: calc(100% - 44px);
   min-height: calc(100vh);
+  padding-left: 44px;
+  padding-top: 82px;
+  position: relative;
+}
+.sec1 .text_box {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 38px;
+  padding-top: 26px;
+  z-index: 1;
+  position: relative;
+  mix-blend-mode: difference;
 }
 .sec1 .text_box h2 {
-  font-size: 12.5vw;
+  font-size: 11.5vw;
+  margin-right: 2vw;
+  letter-spacing: -1vw;
+  font-weight: 400;
+  color: white;
+}
+.sec1 .text_box .svg_morph {
+  height: 7vw;
+  width: 7vw;
+  margin-top: 2.5vw;
+  fill: white;
+}
+.sec1 .text_box .svg_morph.first {
+  margin-left: 1vw;
+  margin-top: 3vw;
+}
+.sec1 .text_box .svg_morph.second {
+  margin-right: 1.75vw;
+}
+.sec1 .text_box .svg_morph.third {
+  margin-left: 1vw;
+  margin-right: 1.75vw;
+}
+.sec1 .bg_box {
+  position: absolute;
+  width: 82vw;
+  height: 41vw;
+  top: 82px;
+  left: 44px;
+  padding: 30px;
+  padding-left: 6vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+.sec1 .bg_box i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 50%;
+}
+.sec1 .bg_box i.first {
+  width: 50%;
+  clip-path: polygon(
+    0 0,
+    0% 20%,
+    0 48%,
+    0% 80%,
+    0 100%,
+    47% 100%,
+    100% 100%,
+    100% 80%,
+    100% 51%,
+    100% 20%,
+    100% 0,
+    49% 0
+  );
+}
+.sec1 .bg_box i.second {
+  width: 25%;
+  border-radius: 0 41vw 41vw 0;
+}
+.sec1 .bg_box i.third {
+  width: 25%;
+  border-radius: 0 41vw 41vw 0;
+}
+
+/* .sec1 .bg_box .first {
+  clip-path: polygon(
+    0 0,
+    0% 20%,
+    0 48%,
+    0% 80%,
+    0 100%,
+    47% 100%,
+    100% 100%,
+    100% 80%,
+    100% 51%,
+    100% 20%,
+    100% 0,
+    49% 0
+  );
+} */
+
+/* 섹션2 */
+
+.sec2 {
+  background-color: white;
+  width: calc(100% - 44px);
+  min-height: calc(100vh);
+  padding-left: 44px;
+  padding-top: 82px;
+}
+.sec2 .container {
+  box-sizing: border-box;
+  padding: 0 38px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.sec2 h2 {
+  font-size: 6vw;
+  letter-spacing: -0.4vw;
+  position: relative;
+  z-index: 2;
+  color: white;
+  mix-blend-mode: difference;
+  margin-bottom: 20px;
+}
+.sec2 .up .first {
+  margin-right: 22%;
+  float: right;
+  margin-bottom: 120px;
+}
+.sec2 .img_box {
+  aspect-ratio: 1 / 1;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+}
+.sec2 .up .first .img_box {
+  width: 36vw;
+}
+.sec2 .up .first .img_box img {
+  width: 36vw;
+}
+.sec2 .down {
+  display: flex;
+  justify-content: space-between;
+}
+.sec2 .down .second .img_box {
+  width: 44vw;
+}
+.sec2 .down .second .img_box img {
+  width: 44vw;
+}
+.sec2 .down .third {
+  margin-top: 600px;
+}
+.sec2 .down .third .img_box {
+  width: 32vw;
+}
+.sec2 .down .third .img_box img {
+  width: 32vw;
+}
+.sec2 .text_box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sec2 .text_box .lb {
+  border: 1px solid black;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+/* 섹션3 */
+
+.sec3 {
+  background-color: white;
+  width: calc(100% - 44px);
+  min-height: calc(100vh);
+  padding-left: 44px;
+  padding-top: 200px;
+}
+.sec2 .container {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.sec3 .up > .text_box {
+  font-size: 2.22vw;
+  padding: 0 38px;
+  max-width: 75vw;
+  line-height: 1.2;
+  margin-bottom: 60px;
+  letter-spacing: -0.05vw;
+}
+.sec3 .up > .text_box span {
+  color: gray;
+}
+.sec3 .hover_box {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.sec3 .up .card {
+  width: 25%;
+  height: 460px;
+  border-right: 1px solid black;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.5s;
+  background-color: white;
+  position: relative;
+}
+.sec3 .up .card.third {
+  border-right: none;
+}
+.sec3 .up .card .icon {
+  width: 100px;
+  transition: 0.5s;
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
+}
+.sec3 .up .card .icon svg {
+  fill: white;
+}
+.sec3 .up .card .text_box {
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  transition: 0.5s;
+  position: relative;
+  z-index: 2;
+}
+.sec3 .up .card.third .text_box {
+  height: 60px;
+}
+.sec3 .up .card:hover .text_box {
+  height: 84px;
+  overflow: hidden;
+}
+.sec3 .up .card.third:hover .text_box {
+  height: 114px;
+}
+.sec3 .up .card .text_box .title {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  transition: 0.5s;
+}
+.sec3 .up .card:hover .text_box .title {
+  color: white;
+}
+.sec3 .up .card .text_box .text {
+  font-size: 14px;
+  letter-spacing: -0.1px;
+  line-height: 1.6;
+  transform: translateY(60px);
+  transition: 0.5s;
+}
+.sec3 .up .card:hover .text_box .text {
+  color: white;
+  transform: translateY(0px);
+}
+.sec3 .up .card .black {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  z-index: 1;
+  transition: 0.5s;
+}
+.sec3 .up .card:hover .black {
+  transform: scaleY(1);
+}
+.sec3 .down {
+  margin-top: 100px;
+}
+.sec3 .down > .title {
+  font-size: 7vw;
+  letter-spacing: -0.3vw;
+  margin-left: 38px;
+  margin-bottom: 60px;
+}
+.sec3 .down .card {
+  width: 25%;
+  height: 600px;
+  border-right: 1px solid black;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.5s;
+  background-color: white;
+  position: relative;
+}
+.sec3 .down .card.blank {
+  border-right: none;
+}
+.sec3 .down .card .title_box {
+  position: relative;
+  z-index: 2;
+  margin-top: 228px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+}
+.sec3 .down .card:hover .title_box {
+  color: white;
+  margin-top: 0px;
+}
+.sec3 .down .card .title_box img {
+  transition: 0.5s;
+}
+.sec3 .down .card:hover .title_box img {
+  filter: invert(1);
+}
+.sec3 .down .card .title {
+  font-size: 2vw;
+  line-height: 1.4;
+  letter-spacing: -0.1vw;
+}
+.sec3 .down .card .text_box {
+  height: 0px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.sec3 .down .card:hover .text_box {
+  height: 67px;
+}
+.sec3 .down .card .text {
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  letter-spacing: -0.1px;
+  line-height: 1.6;
+  transition: 0.5s;
+  transform: translateY(60px);
+}
+.sec3 .down .card:hover .text {
+  color: white;
+  transform: translateY(0px);
+}
+.sec3 .down .card .black {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  z-index: 1;
+  transition: 0.5s;
+}
+.sec3 .down .card:hover .black {
+  transform: scaleY(1);
 }
