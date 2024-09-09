@@ -4,7 +4,7 @@
 /* 공통 */
 body {
   font-family: "Poppins", sans-serif;
-  background-color: black;
+  background-color: white;
 }
 body a {
   color: black;
@@ -12,12 +12,12 @@ body a {
   background: linear-gradient(90deg, transparent, transparent), linear-gradient(90deg, currentColor, currentColor);
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
-  background-size: 100% 0.1em, 0 0.1em;
-  transition: 0.5s;
-  line-height: 1.2;
+  background-size: 100% 1px, 0 1px;
+  display: inline;
+  transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 body a:hover {
-  background-size: 0 0.1em, 100% 0.1em;
+  background-size: 0 1px, 100% 1px;
 }
 body button {
   font-family: "Poppins", sans-serif;
@@ -32,7 +32,6 @@ body strong {
 /* 헤더 */
 header {
   height: 82px;
-  border-bottom: 1px solid black;
   padding: 0 44px;
   box-sizing: border-box;
   display: flex;
@@ -41,28 +40,54 @@ header {
   width: 100%;
   z-index: 100;
   background-color: white;
+  transition: 0.5s;
 }
 header .logo {
   height: 100%;
   display: flex;
   align-items: center;
+  animation-name: upDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transform: translateY(-300%);
 }
 header .logo h1 {
   line-height: 100%;
   font-size: 22px;
   font-weight: 400;
 }
+header .logo svg {
+  height: 24px;
+  display: none;
+}
 header ul {
   display: flex;
   -moz-column-gap: 2em;
        column-gap: 2em;
 }
+header ul li {
+  animation-name: upDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transform: translateY(-300%);
+}
 header ul li a {
   font-size: 13px;
+}
+header ul li:nth-child(2) {
+  animation-delay: 0.1s;
+}
+header ul li:nth-child(3) {
+  animation-delay: 0.2s;
 }
 header .right > a {
   font-size: 13px;
   font-weight: 600;
+  animation-name: upDown;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transform: translateY(-300%);
+  padding-bottom: 2px;
 }
 
 header > nav {
@@ -73,6 +98,36 @@ header > nav {
   justify-content: space-between;
 }
 
+header::before {
+  content: "line";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  height: 1px;
+  font-size: 0;
+  animation-name: widthUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes upDown {
+  0% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes widthUp {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
 /* 사이드바 */
 .sidebar {
   width: 44px;
@@ -83,8 +138,12 @@ header > nav {
   display: flex;
   flex-direction: column;
   z-index: 99;
+  animation-name: leftRight;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 .sidebar .blank {
+  transition: 0.5s;
   height: 82px;
 }
 .sidebar button {
@@ -95,12 +154,45 @@ header > nav {
   align-items: flex-end;
   justify-content: center;
   cursor: pointer;
+  animation-name: leftRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  transform: translateX(-100%);
 }
 .sidebar button span {
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   text-align: left;
   font-size: 14px;
+}
+.sidebar button span::after {
+  background: #050505;
+  bottom: 0;
+  content: " ";
+  height: 100%;
+  position: absolute;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  width: 1px;
+}
+.sidebar button:hover span::after {
+  transform: scaleY(1);
+}
+.sidebar button:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.sidebar button:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.sidebar button:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.sidebar button:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.sidebar button:nth-child(6) {
+  animation-delay: 0.5s;
 }
 .sidebar button.on {
   flex: 1;
@@ -109,25 +201,39 @@ header > nav {
   cursor: auto;
 }
 
+@keyframes leftRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 /* 섹션1 */
 .sec1 {
   background-color: rgb(255, 255, 255);
+  height: 100vh;
+  max-height: 100vh;
+  margin-bottom: 100px;
 }
 .sec1 .container {
   width: calc(100% - 44px);
-  min-height: 100vh;
+  height: 100%;
   padding-left: 44px;
   padding-top: 82px;
   position: relative;
 }
 .sec1 .container .text_box {
   display: flex;
-  flex-wrap: wrap;
   padding-left: 38px;
   padding-top: 26px;
   z-index: 1;
   position: relative;
   mix-blend-mode: difference;
+  flex-direction: column;
+}
+.sec1 .container .text_box .line {
+  display: flex;
 }
 .sec1 .container .text_box h2 {
   font-size: 11.5vw;
@@ -135,23 +241,87 @@ header > nav {
   letter-spacing: -1vw;
   font-weight: 400;
   color: white;
+  animation-name: downUpO;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+.sec1 .container .text_box .ani2 {
+  animation-delay: 0.1s;
+}
+.sec1 .container .text_box .ani3 {
+  animation-delay: 0.2s;
+}
+.sec1 .container .text_box .ani4 {
+  animation-delay: 0.3s;
+}
+.sec1 .container .text_box .ani5 {
+  animation-delay: 0.4s;
+}
+.sec1 .container .text_box .ani6 {
+  animation-delay: 0.5s;
+}
+.sec1 .container .text_box .ani7 {
+  animation-delay: 0.6s;
+}
+.sec1 .container .text_box .ani8 {
+  animation-delay: 0.7s;
+}
+.sec1 .container .text_box .ani9 {
+  animation-delay: 0.8s;
+}
+.sec1 .container .text_box .ani10 {
+  animation-delay: 0.9s;
 }
 .sec1 .container .text_box .svg_morph {
   height: 7vw;
   width: 7vw;
   margin-top: 2.5vw;
   fill: white;
+  animation-name: downUpO;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  overflow: hidden;
 }
 .sec1 .container .text_box .svg_morph.first {
   margin-left: 1vw;
   margin-top: 3vw;
 }
+.sec1 .container .text_box .svg_morph.first svg {
+  animation-name: svgMotion1;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+}
+.sec1 .container .text_box .svg_morph.first svg:nth-child(2) path {
+  transform: rotate(180deg);
+  transform-origin: 120% 212%;
+}
 .sec1 .container .text_box .svg_morph.second {
   margin-right: 1.75vw;
+}
+.sec1 .container .text_box .svg_morph.second svg {
+  animation-name: svgMotion2;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-delay: 2s;
+}
+.sec1 .container .text_box .svg_morph.second svg:nth-child(2) {
+  position: relative;
+  top: -7.5vw;
+  left: 6.5vw;
+  scale: 0.9;
 }
 .sec1 .container .text_box .svg_morph.third {
   margin-left: 1vw;
   margin-right: 1.75vw;
+  height: 7.4vw;
+}
+.sec1 .container .text_box .svg_morph.third svg {
+  animation-name: svgMotion1;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
 }
 .sec1 .container .bg_box {
   position: absolute;
@@ -165,26 +335,85 @@ header > nav {
   flex-wrap: wrap;
 }
 .sec1 .container .bg_box i {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
   background-color: black;
   border-radius: 50%;
+  animation-name: downUp;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  top: 110%;
 }
 .sec1 .container .bg_box i.first {
   width: 50%;
   -webkit-clip-path: polygon(0 0, 0% 20%, 0 48%, 0% 80%, 0 100%, 47% 100%, 100% 100%, 100% 80%, 100% 51%, 100% 20%, 100% 0, 49% 0);
           clip-path: polygon(0 0, 0% 20%, 0 48%, 0% 80%, 0 100%, 47% 100%, 100% 100%, 100% 80%, 100% 51%, 100% 20%, 100% 0, 49% 0);
+  animation-delay: 1s;
 }
 .sec1 .container .bg_box i.second {
   width: 25%;
   border-radius: 0 41vw 41vw 0;
+  animation-delay: 0.5s;
 }
 .sec1 .container .bg_box i.third {
   width: 25%;
   border-radius: 0 41vw 41vw 0;
 }
 
+@keyframes downUpO {
+  0% {
+    transform: translateY(40%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@keyframes downUp {
+  0% {
+    top: 110%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@keyframes svgMotion1 {
+  0% {
+    transform: translateY(0%);
+  }
+  10% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes svgMotion2 {
+  0% {
+    transform: translateX(0%);
+  }
+  10% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
 /* 섹션2 */
 .sec2 {
   background-color: white;
@@ -208,6 +437,12 @@ header > nav {
   color: white;
   mix-blend-mode: difference;
   margin-bottom: 20px;
+}
+.sec2 .container .rb {
+  letter-spacing: -0.5px;
+}
+.sec2 .container .lb:hover {
+  background-size: 0;
 }
 .sec2 .container .up .first {
   margin-right: 22%;
@@ -270,7 +505,13 @@ header > nav {
   display: flex;
   flex-direction: column;
 }
-.sec3 .up > .text_box {
+.sec3 .container .hover_box {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.sec3 .container .up > .text_box {
   font-size: 2.22vw;
   padding: 0 38px;
   max-width: 75vw;
@@ -278,10 +519,10 @@ header > nav {
   margin-bottom: 60px;
   letter-spacing: -0.05vw;
 }
-.sec3 .up > .text_box span {
+.sec3 .container .up > .text_box span {
   color: gray;
 }
-.sec3 .up .card {
+.sec3 .container .up .card {
   width: 25%;
   height: 460px;
   border-right: 1px solid black;
@@ -294,17 +535,17 @@ header > nav {
   background-color: white;
   position: relative;
 }
-.sec3 .up .card .icon {
+.sec3 .container .up .card .icon {
   width: 100px;
   transition: 0.5s;
   position: relative;
   z-index: 2;
   mix-blend-mode: difference;
 }
-.sec3 .up .card .icon svg {
+.sec3 .container .up .card .icon svg {
   fill: white;
 }
-.sec3 .up .card .text_box {
+.sec3 .container .up .card .text_box {
   width: 100%;
   height: 30px;
   overflow: hidden;
@@ -312,20 +553,20 @@ header > nav {
   position: relative;
   z-index: 2;
 }
-.sec3 .up .card .text_box .title {
+.sec3 .container .up .card .text_box .title {
   font-size: 30px;
   font-weight: 400;
   margin-bottom: 10px;
   transition: 0.5s;
 }
-.sec3 .up .card .text_box .text {
+.sec3 .container .up .card .text_box .text {
   font-size: 14px;
   letter-spacing: -0.1px;
   line-height: 1.6;
   transform: translateY(60px);
   transition: 0.5s;
 }
-.sec3 .up .card .black {
+.sec3 .container .up .card .black {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -337,34 +578,28 @@ header > nav {
   z-index: 1;
   transition: 0.5s;
 }
-.sec3 .up .card:hover .text_box {
+.sec3 .container .up .card:hover .text_box {
   height: 84px;
   overflow: hidden;
 }
-.sec3 .up .card:hover .text_box .title {
+.sec3 .container .up .card:hover .text_box .title {
   color: white;
 }
-.sec3 .up .card:hover .text_box .text {
+.sec3 .container .up .card:hover .text_box .text {
   color: white;
   transform: translateY(0px);
 }
-.sec3 .up .card:hover .black {
+.sec3 .container .up .card:hover .black {
   transform: scaleY(1);
 }
-.sec3 .up .card.third {
+.sec3 .container .up .card.third {
   border-right: none;
 }
-.sec3 .up .card.third .text_box {
+.sec3 .container .up .card.third .text_box {
   height: 60px;
 }
-.sec3 .up .card.third:hover .text_box {
+.sec3 .container .up .card.third:hover .text_box {
   height: 114px;
-}
-.sec3 .up .hover_box {
-  width: 100%;
-  display: flex;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 .sec3 .middle {

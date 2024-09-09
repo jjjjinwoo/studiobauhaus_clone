@@ -6,7 +6,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: black;
+  background-color: white;
   a {
     color: black;
     text-decoration: none;
@@ -14,12 +14,12 @@ body {
       linear-gradient(90deg, currentColor, currentColor);
     background-position: 100% 100%, 0 100%;
     background-repeat: no-repeat;
-    background-size: 100% 0.1em, 0 0.1em;
-    transition: 0.5s;
-    line-height: 1.2;
+    background-size: 100% 1px, 0 1px;
+    display: inline;
+    transition: background-size 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
   a:hover {
-    background-size: 0 0.1em, 100% 0.1em;
+    background-size: 0 1px, 100% 1px;
   }
   button {
     font-family: "Poppins", sans-serif;
@@ -36,7 +36,6 @@ body {
 
 header {
   height: 82px;
-  border-bottom: 1px solid black;
   padding: 0 44px;
   box-sizing: border-box;
   display: flex;
@@ -45,26 +44,52 @@ header {
   width: 100%;
   z-index: 100;
   background-color: white;
+  transition: 0.5s;
   .logo {
     height: 100%;
     display: flex;
     align-items: center;
+    animation-name: upDown;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transform: translateY(-300%);
     h1 {
       line-height: 100%;
       font-size: 22px;
       font-weight: 400;
     }
+    svg {
+      height: 24px;
+      display: none;
+    }
   }
   ul {
     display: flex;
     column-gap: 2em;
-    li a {
-      font-size: 13px;
+    li {
+      animation-name: upDown;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      transform: translateY(-300%);
+      a {
+        font-size: 13px;
+      }
+    }
+    li:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    li:nth-child(3) {
+      animation-delay: 0.2s;
     }
   }
   .right > a {
     font-size: 13px;
     font-weight: 600;
+    animation-name: upDown;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transform: translateY(-300%);
+    padding-bottom: 2px;
   }
 }
 header > nav {
@@ -73,6 +98,36 @@ header > nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+header::before {
+  content: "line";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  height: 1px;
+  font-size: 0;
+  animation-name: widthUp;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes upDown {
+  0% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes widthUp {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 /* 사이드바 */
@@ -86,7 +141,11 @@ header > nav {
   display: flex;
   flex-direction: column;
   z-index: 99;
+  animation-name: leftRight;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
   .blank {
+    transition: 0.5s;
     height: 82px;
   }
   button {
@@ -97,12 +156,47 @@ header > nav {
     align-items: flex-end;
     justify-content: center;
     cursor: pointer;
+    animation-name: leftRight;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    transform: translateX(-100%);
     span {
       writing-mode: vertical-lr;
       transform: rotate(180deg);
       text-align: left;
       font-size: 14px;
     }
+    span::after {
+      background: #050505;
+      bottom: 0;
+      content: " ";
+      height: 100%;
+      position: absolute;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+      width: 1px;
+    }
+  }
+  button:hover {
+    span::after {
+      transform: scaleY(1);
+    }
+  }
+  button:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  button:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  button:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  button:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  button:nth-child(6) {
+    animation-delay: 0.5s;
   }
   button.on {
     flex: 1;
@@ -112,47 +206,128 @@ header > nav {
   }
 }
 
+@keyframes leftRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
 /* 섹션1 */
 
 .sec1 {
   background-color: rgb(255, 255, 255);
+  height: 100vh;
+  max-height: 100vh;
+  margin-bottom: 100px;
   .container {
     width: calc(100% - 44px);
-    min-height: calc(100vh);
+    height: 100%;
     padding-left: 44px;
     padding-top: 82px;
     position: relative;
     .text_box {
       display: flex;
-      flex-wrap: wrap;
       padding-left: 38px;
       padding-top: 26px;
       z-index: 1;
       position: relative;
       mix-blend-mode: difference;
+      flex-direction: column;
+      .line {
+        display: flex;
+      }
       h2 {
         font-size: 11.5vw;
         margin-right: 2vw;
         letter-spacing: -1vw;
         font-weight: 400;
         color: white;
+        animation-name: downUpO;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+      }
+      .ani2 {
+        animation-delay: 0.1s;
+      }
+      .ani3 {
+        animation-delay: 0.2s;
+      }
+      .ani4 {
+        animation-delay: 0.3s;
+      }
+      .ani5 {
+        animation-delay: 0.4s;
+      }
+      .ani6 {
+        animation-delay: 0.5s;
+      }
+      .ani7 {
+        animation-delay: 0.6s;
+      }
+      .ani8 {
+        animation-delay: 0.7s;
+      }
+      .ani9 {
+        animation-delay: 0.8s;
+      }
+      .ani10 {
+        animation-delay: 0.9s;
       }
       .svg_morph {
         height: 7vw;
         width: 7vw;
         margin-top: 2.5vw;
         fill: white;
+        animation-name: downUpO;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        overflow: hidden;
       }
       .svg_morph.first {
         margin-left: 1vw;
         margin-top: 3vw;
+        svg {
+          animation-name: svgMotion1;
+          animation-duration: 8s;
+          animation-iteration-count: infinite;
+        }
+        svg:nth-child(2) {
+          path {
+            transform: rotate(180deg);
+            transform-origin: 120% 212%;
+          }
+        }
       }
       .svg_morph.second {
         margin-right: 1.75vw;
+        svg {
+          animation-name: svgMotion2;
+          animation-duration: 8s;
+          animation-iteration-count: infinite;
+          animation-delay: 2s;
+        }
+        svg:nth-child(2) {
+          position: relative;
+          top: -7.5vw;
+          left: 6.5vw;
+          scale: 0.9;
+        }
       }
       .svg_morph.third {
         margin-left: 1vw;
         margin-right: 1.75vw;
+        height: 7.4vw;
+        svg {
+          animation-name: svgMotion1;
+          animation-duration: 8s;
+          animation-iteration-count: infinite;
+          animation-delay: 1s;
+        }
       }
     }
     .bg_box {
@@ -166,11 +341,16 @@ header > nav {
       display: flex;
       flex-wrap: wrap;
       i {
+        position: relative;
         display: block;
         width: 100%;
         height: 100%;
         background-color: black;
         border-radius: 50%;
+        animation-name: downUp;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        top: 110%;
       }
       i.first {
         width: 50%;
@@ -188,16 +368,71 @@ header > nav {
           100% 0,
           49% 0
         );
+        animation-delay: 1s;
       }
       i.second {
         width: 25%;
         border-radius: 0 41vw 41vw 0;
+        animation-delay: 0.5s;
       }
       i.third {
         width: 25%;
         border-radius: 0 41vw 41vw 0;
       }
     }
+  }
+}
+
+@keyframes downUpO {
+  0% {
+    transform: translateY(40%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@keyframes downUp {
+  0% {
+    top: 110%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@keyframes svgMotion1 {
+  0% {
+    transform: translateY(0%);
+  }
+  10% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes svgMotion2 {
+  0% {
+    transform: translateX(0%);
+  }
+  10% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }
 
@@ -223,6 +458,12 @@ header > nav {
       color: white;
       mix-blend-mode: difference;
       margin-bottom: 20px;
+    }
+    .rb {
+      letter-spacing: -0.5px;
+    }
+    .lb:hover {
+      background-size: 0;
     }
     .up {
       .first {
@@ -290,107 +531,107 @@ header > nav {
     position: relative;
     display: flex;
     flex-direction: column;
-  }
-  .up > .text_box {
-    font-size: 2.22vw;
-    padding: 0 38px;
-    max-width: 75vw;
-    line-height: 1.2;
-    margin-bottom: 60px;
-    letter-spacing: -0.05vw;
-  }
-  .up > .text_box span {
-    color: gray;
-  }
-  .up {
-    .card {
-      width: 25%;
-      height: 460px;
-      border-right: 1px solid black;
-      padding: 24px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: 0.5s;
-      background-color: white;
-      position: relative;
-      .icon {
-        width: 100px;
-        transition: 0.5s;
-        position: relative;
-        z-index: 2;
-        mix-blend-mode: difference;
-        svg {
-          fill: white;
-        }
-      }
-      .text_box {
-        width: 100%;
-        height: 30px;
-        overflow: hidden;
-        transition: 0.5s;
-        position: relative;
-        z-index: 2;
-        .title {
-          font-size: 30px;
-          font-weight: 400;
-          margin-bottom: 10px;
-          transition: 0.5s;
-        }
-        .text {
-          font-size: 14px;
-          letter-spacing: -0.1px;
-          line-height: 1.6;
-          transform: translateY(60px);
-          transition: 0.5s;
-        }
-      }
-      .black {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: black;
-        transform: scaleY(0);
-        transform-origin: 50% 100%;
-        z-index: 1;
-        transition: 0.5s;
-      }
-    }
-    .card:hover {
-      .text_box {
-        height: 84px;
-        overflow: hidden;
-        .title {
-          color: white;
-        }
-        .text {
-          color: white;
-          transform: translateY(0px);
-        }
-      }
-      .black {
-        transform: scaleY(1);
-      }
-    }
-    .card.third {
-      border-right: none;
-      .text_box {
-        height: 60px;
-      }
-    }
-    .card.third:hover {
-      .text_box {
-        height: 114px;
-      }
-    }
     .hover_box {
       width: 100%;
       display: flex;
       border-top: 1px solid black;
       border-bottom: 1px solid black;
+    }
+    .up > .text_box {
+      font-size: 2.22vw;
+      padding: 0 38px;
+      max-width: 75vw;
+      line-height: 1.2;
+      margin-bottom: 60px;
+      letter-spacing: -0.05vw;
+    }
+    .up > .text_box span {
+      color: gray;
+    }
+    .up {
+      .card {
+        width: 25%;
+        height: 460px;
+        border-right: 1px solid black;
+        padding: 24px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: 0.5s;
+        background-color: white;
+        position: relative;
+        .icon {
+          width: 100px;
+          transition: 0.5s;
+          position: relative;
+          z-index: 2;
+          mix-blend-mode: difference;
+          svg {
+            fill: white;
+          }
+        }
+        .text_box {
+          width: 100%;
+          height: 30px;
+          overflow: hidden;
+          transition: 0.5s;
+          position: relative;
+          z-index: 2;
+          .title {
+            font-size: 30px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            transition: 0.5s;
+          }
+          .text {
+            font-size: 14px;
+            letter-spacing: -0.1px;
+            line-height: 1.6;
+            transform: translateY(60px);
+            transition: 0.5s;
+          }
+        }
+        .black {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: black;
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+          z-index: 1;
+          transition: 0.5s;
+        }
+      }
+      .card:hover {
+        .text_box {
+          height: 84px;
+          overflow: hidden;
+          .title {
+            color: white;
+          }
+          .text {
+            color: white;
+            transform: translateY(0px);
+          }
+        }
+        .black {
+          transform: scaleY(1);
+        }
+      }
+      .card.third {
+        border-right: none;
+        .text_box {
+          height: 60px;
+        }
+      }
+      .card.third:hover {
+        .text_box {
+          height: 114px;
+        }
+      }
     }
   }
 }
