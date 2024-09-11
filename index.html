@@ -9,6 +9,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <!-- 스크롤 트리거 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <!-- 해결 못한 부분
+     1. 섹션3 선 겹침
+     2. 섹션3 이미지 바뀜
+     3. 섹션4 텍스트 애니메이션
+     4. 섹션4 텍스트 bottom에 딱 붙는거
+     5. *사이드바 위치 이동시 색깔
+     6. readmore 구현  -->
   </head>
   <body>
     <div class="container">
@@ -183,9 +190,14 @@
             <h2>Featured Works</h2>
             <div class="up">
               <div class="first">
-                <div class="img_box">
+                <a href="#" class="img_box">
                   <img src="./img/main/sec2/first.webp" alt="first" />
-                </div>
+                  <video
+                    muted
+                    class="video2"
+                    src="video/main/sec2/first.mp4"
+                  ></video>
+                </a>
                 <div class="text_box">
                   <a class="rb" href="#">Prague Quadrennial</a>
                   <a class="lb" href="#">AIO</a>
@@ -194,18 +206,20 @@
             </div>
             <div class="down">
               <div class="second">
-                <div class="img_box">
+                <a href="#" class="img_box">
                   <img src="./img/main/sec2/second.webp" alt="second" />
-                </div>
+                  <video muted src="./video/main/sec2/second.mp4"></video>
+                </a>
                 <div class="text_box">
                   <a class="rb" href="#">Conference on Nothing</a>
                   <a class="lb" href="#">DEVELOPMENT </a>
                 </div>
               </div>
               <div class="third">
-                <div class="img_box">
+                <a href="#" class="img_box">
                   <img src="./img/main/sec2/third.webp" alt="third" />
-                </div>
+                  <video muted src="./video/main/sec2/third.mp4"></video>
+                </a>
                 <div class="text_box">
                   <a class="rb" href="#">Andel Sound</a>
                   <a class="lb" href="#">AIO</a>
@@ -352,7 +366,26 @@
                   </div>
                   <div class="black"></div>
                 </div>
-                <div class="card blank"></div>
+                <div class="card blank">
+                  <div class="icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1291 1291"
+                      class="bc-svg"
+                      style="
+                        translate: none;
+                        rotate: none;
+                        scale: none;
+                        transform: translate3d(0px, 0px, 0px) rotate(232.815deg);
+                      "
+                    >
+                      <path
+                        d="M1292 571l-463-1 327-327-106-106h-2L722 463V1H571l-1 463-327-327c-36 34-71 69-106 105v3l326 325-462 1v151h462l-326 326c35.2 36.2 70.5 72.2 106 108l327-327 1 463h151V830l326 325h2l106-106-327-327h463V571z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <a href="#">VIEW ALL SERVICES</a>
+                </div>
               </div>
             </div>
             <div class="down">
@@ -382,7 +415,7 @@
                   </div>
                 </div>
                 <div class="body_text">
-                  <p>
+                  <p class="first on">
                     Highly satisfied. <strong>studio bauhaus</strong> provided
                     an excellent service throughout our first year in touch. All
                     deadlines were fulfilled and the user experience of the
@@ -391,56 +424,90 @@
                     was something to correct or change, it was done within
                     reasonable time for all sides.
                   </p>
-                  <button class="more" href="#">READ MORE</button>
+                  <p class="second">
+                    <strong>studio bauhaus</strong> has exceeded our
+                    expectations with design and overall solution. They
+                    completely met our desire to represent our studio with
+                    artistic looking website, so we can perfectly deliver the
+                    message to our potential customers of what we do and how we
+                    do it.
+                  </p>
+                  <p class="third">
+                    I worked with <strong>studio bauhaus</strong> on a website
+                    for the <strong>Prague Quadrennial 2023</strong>, an
+                    international festival of scenography and performance
+                    design. Despite all the changes and extensions that went
+                    beyond the scope of the original – already quite robust –
+                    project brief, Luke Hawkins and his team at studio bauhaus
+                    always managed to deliver not just novelty looking site, but
+                    also a well-structured one, answering all the needs the
+                    project had. All in a timely, professional, and very human
+                    manner.
+                  </p>
+                  <a class="more">READ MORE</a>
                 </div>
               </div>
             </div>
           </div>
         </section>
         <section class="sec4">
-          <div class="container"></div>
-        </section>
-      </main>
-      <footer>
-        <div class="container">
-          <h2 class="title">
-            <div class="up">
-              <img
-                class="hello"
-                src="./img/main/footer_text/HELLO.svg"
-                alt="HELLO"
-              />
-              <img src="./img/main/footer_text/STUDIO.svg" alt="STUDIO" />
+          <div class="container">
+            <div class="white_box">
+              <h2 class="title">
+                <div class="up">
+                  <img
+                    class="hello"
+                    src="./img/main/footer_text/HELLO.svg"
+                    alt="HELLO"
+                  />
+                  <img
+                    class="studio"
+                    src="./img/main/footer_text/STUDIO.svg"
+                    alt="STUDIO"
+                  />
+                </div>
+                <div class="down">
+                  <!-- <img
+                    class="studio"
+                    src="./img/main/footer_text/STUDIO.svg"
+                    alt="STUDIO"
+                  /> -->
+                  <img
+                    class="bauhaus"
+                    src="./img/main/footer_text/BAUHAUS.svg"
+                    alt="BAUHAUS"
+                  />
+                </div>
+              </h2>
             </div>
-            <div class="down">
-              <img src="./img/main/footer_text/BAUHAUS.svg" alt="BAUHAUS" />
-            </div>
-          </h2>
-          <div class="text_box">
-            <div class="up">
-              <p class="rt">
-                Let's craft your<br />
-                web experience<br />
-                together.
-              </p>
-              <div class="lb">
-                <a href="https://www.instagram.com/studiobau.haus/"
-                  >INSTAGRAM</a
-                >
-                <a href="https://www.linkedin.com/company/studiobauhaus/"
-                  >LINKEDIN</a
-                >
+            <div class="black_box">
+              <div class="text_box">
+                <div class="up">
+                  <p class="rt">
+                    Let's craft your<br />
+                    web experience<br />
+                    together.
+                  </p>
+                  <div class="lb">
+                    <a href="https://www.instagram.com/studiobau.haus/"
+                      >INSTAGRAM</a
+                    >
+                    <a href="https://www.linkedin.com/company/studiobauhaus/"
+                      >LINKEDIN</a
+                    >
+                  </div>
+                </div>
+                <div class="down">
+                  <a class="rb" href="https://studiobau.haus/privacy-policy/">
+                    Privacy Policy</a
+                  >
+                  <span class="lt">2024 @ all rights reserved</span>
+                </div>
               </div>
             </div>
-            <div class="down">
-              <a class="rb" href="https://studiobau.haus/privacy-policy/">
-                Privacy Policy</a
-              >
-              <span class="lt">2024 @ all rights reserved</span>
-            </div>
           </div>
-        </div>
-      </footer>
+        </section>
+      </main>
     </div>
     <script src="./js/index.js"></script>
   </body>
