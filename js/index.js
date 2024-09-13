@@ -109,7 +109,7 @@ sec2ImgBox.forEach((box, index) => {
   });
 });
 
-// 섹션3
+// 섹션3 - 호버박스
 
 const sec3UpCard = document.querySelectorAll(".sec3 .up .card");
 
@@ -133,6 +133,8 @@ for (let i = 0; i < sec3DownCard.length; i++) {
   sec3DownCard[i].addEventListener("mouseenter", function () {
     for (let i = 0; i < sec3DownCard.length; i++) {
       sec3DownCard[i].classList.remove("on");
+      bodyText[i].classList.remove("rm");
+      moreButton.classList.remove("rm");
     }
     this.classList.add("on");
 
@@ -158,6 +160,18 @@ for (let i = 0; i < sec3DownCard.length; i++) {
     });
   });
 }
+
+// 섹션3 - READ MORE
+
+const moreButton = document.querySelector(".sec3 .body_text .more");
+const bodyText = document.querySelectorAll(".sec3 .body_text p");
+
+moreButton.addEventListener("click", function () {
+  for (var i = 0; i < bodyText.length; i++) {
+    bodyText[i].classList.add("rm");
+    moreButton.classList.add("rm");
+  }
+});
 
 // 섹션4
 

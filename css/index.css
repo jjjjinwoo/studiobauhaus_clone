@@ -801,18 +801,19 @@ header::before {
 }
 .sec3 .container .down .hover_box .body_text {
   position: relative;
-  padding: 68px;
+  padding: 0 68px;
 }
 .sec3 .container .down .hover_box .body_text p {
-  font-size: 3.4vw;
+  font-size: 3vw;
   font-weight: 400;
   letter-spacing: -0.1vw;
-  line-height: 1.1;
+  line-height: 1.2;
   display: none;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
-  height: 22vw;
+  height: 423px;
   overflow: hidden;
+  padding-top: 68px;
 }
 .sec3 .container .down .hover_box .body_text .more {
   position: absolute;
@@ -826,8 +827,16 @@ header::before {
 .sec3 .container .down .hover_box .body_text .more:hover {
   background-size: 0 3px, 100% 3px;
 }
+.sec3 .container .down .hover_box .body_text .more.rm {
+  display: none;
+}
 .sec3 .container .down .hover_box .body_text p.on {
   display: -webkit-box;
+}
+.sec3 .container .down .hover_box .body_text p.rm {
+  overflow-y: scroll;
+  height: 533px;
+  -webkit-box-orient: inherit;
 }
 
 .sec3 .middle > .title,
