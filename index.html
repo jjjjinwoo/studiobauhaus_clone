@@ -9,18 +9,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <!-- 스크롤 트리거 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
-    <!-- 해결 못한 부분
-     1. 섹션3 선 겹침
-     2. 섹션3 이미지 바뀜
-     3. 섹션4 텍스트 애니메이션
-     4. 섹션4 텍스트 bottom에 딱 붙는거
-     5. *사이드바 위치 이동시 색깔
-     6. readmore 구현  -->
+    <!-- jquery -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- slick -->
+    <script src="./js/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="./css/slick/slick.css" />
+    <link rel="stylesheet" href="./css/slick/slick-theme.css" />
   </head>
   <body>
     <div class="container">
       <header>
-        <div class="left logo">
+        <div class="left logo" onclick="toTop()">
           <h1>STUDIO<br />BAUHAUS</h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,6 +45,50 @@
           </ul>
           <a href="#">BOOK AN INTRO CALL</a>
         </nav>
+        <button class="menu_mob">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            class="bc-svg c-header__menu-button__svg"
+          >
+            <path
+              d="M3 12h18M12 6h9M3 18h9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+        </button>
+        <div class="mobile_box">
+          <div class="top">
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="none"
+                class="bc-svg c-header__menu-button__svg"
+              >
+                <path
+                  d="M12 4l-8 8M4 4l8 8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="bottom">
+            <div class="btn_box">
+              <a href="#">SERVICES</a>
+              <a href="#">FAQ</a>
+              <a href="#">CONTACT</a>
+            </div>
+            <a href="#">BOOT AN INTRO CALL</a>
+          </div>
+        </div>
       </header>
       <main>
         <div class="sidebar">
@@ -137,42 +180,44 @@
                 <h2 class="ani6">build</h2>
               </div>
               <div class="line third">
-                <h2 class="ani7">functionalist</h2>
-                <div class="svg_morph third ani8">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1282.3 1336"
-                    shape-rendering="geometricPrecision"
-                    text-rendering="geometricPrecision"
-                    image-rendering="optimizeQuality"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    class="bc-svg"
-                  >
-                    <path
-                      d="M307.3 27.2C421.3 26 512.6 70.4 581.2 160.6 637.5 242.6 654.1 332.1 631.1 429.20000000000005 604.3000000000001 524.2 546.9 593.7 458.90000000000003 637.8000000000001 422.3 654.6 383.90000000000003 664.9000000000001 343.80000000000007 668.5000000000001 449.50000000000006 678.6000000000001 531.8000000000001 727.3000000000001 590.8000000000001 814.8000000000002 644.4000000000001 903.1000000000001 655.2 996.5000000000002 623.4000000000001 1094.9 586.5000000000001 1191.9 519.2 1257.9 421.5000000000001 1293 317.5000000000001 1324.3 220.90000000000012 1309.2 131.80000000000013 1247.9 46.4 1182.9 2.6 1096.4 0.3 988.4 2.7 879.9 46.8 793.1 132.7 728 182.1 693 237.1 673.2 297.7 668.5 184.7 656.7 99.19999999999999 602.5 41.099999999999966 505.9-2.400000000000034 425.2-11.400000000000034 340.79999999999995 14.199999999999967 252.59999999999997 47.89999999999997 152.69999999999996 113.89999999999998 83.79999999999995 212.29999999999995 45.89999999999998 243.19999999999996 35.299999999999976 274.9 29.099999999999977 307.29999999999995 27.199999999999978Z"
-                    ></path>
-                    <path
-                      d="M948.4 27.2C1062.5 26 1153.8 70.4 1222.3 160.5 1278.6 242.5 1295.2 332 1272.2 429.1 1245.4 524.1 1188 593.6 1100 637.7 1063.4 654.5 1025 664.8000000000001 984.9 668.4000000000001 1090.6 678.5000000000001 1172.9 727.2 1231.9 814.7 1285.5 903 1296.3000000000002 996.4000000000001 1264.5 1094.8000000000002 1227.6 1191.8000000000002 1160.3 1257.8000000000002 1062.6 1292.9 958.5999999999999 1324.2 861.9999999999999 1309.1000000000001 772.8999999999999 1247.8000000000002 687.4999999999999 1182.7000000000003 643.6999999999998 1096.3000000000002 641.4999999999999 988.3000000000002 643.8 879.9 688 793.1 773.9 728 823.3 693 878.3 673.2 938.9 668.5 825.9 656.7 740.4 602.5 682.3 505.9 638.8 425.2 629.8 340.79999999999995 655.4 252.59999999999997 689.1 152.69999999999996 755.1 83.79999999999995 853.5 45.89999999999998 884.4 35.299999999999976 916.1 29.099999999999977 948.4 27.199999999999978Z"
-                    ></path>
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="921.18 2110.47 1282.32 1336.04"
-                    shape-rendering="geometricPrecision"
-                    text-rendering="geometricPrecision"
-                    image-rendering="optimizeQuality"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    class="bc-svg"
-                  >
-                    <path
-                      d="M1241.5 2110.5C1360.4 2109.2 1455.57 2155.54 1527 2249.5 1585.69 2334.95 1603.02 2428.29 1579 2529.5 1551.11 2628.51 1491.27 2701.01 1399.5 2747 1361.35 2764.54 1321.35 2775.2 1279.5 2779 1389.69 2789.48 1475.52 2840.32 1537 2931.5 1592.84 3023.52 1604.17 3120.86 1571 3223.5 1532.55 3324.62 1462.38 3393.45 1360.5 3430 1252.09 3462.6 1151.43 3446.93 1058.5 3383 969.512 3315.19 923.845 3225.03 921.5 3112.5 923.968 2999.39 969.968 2908.89 1059.5 2841 1110.97 2804.51 1168.3 2783.84 1231.5 2779 1113.75 2766.75 1024.58 2710.25 964 2609.5 918.656 2525.4 909.323 2437.4 936 2345.5 971.114 2241.39 1039.95 2169.55 1142.5 2130 1174.74 2118.92 1207.74 2112.42 1241.5 2110.5Z"
-                    ></path>
-                    <path
-                      d="M2196.5 2113.5H2203.5V3443.5C1993.73 3434.2 1823.57 3348.2 1693 3185.5 1575.31 3027.38 1532.97 2850.71 1566 2655.5 1602.15 2477.18 1693.98 2335.68 1841.5 2231 1948.54 2158.15 2066.87 2118.99 2196.5 2113.5Z"
-                    ></path>
-                  </svg>
+                <div>
+                  <h2 class="ani7">functionalist</h2>
+                  <div class="svg_morph third ani8">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1282.3 1336"
+                      shape-rendering="geometricPrecision"
+                      text-rendering="geometricPrecision"
+                      image-rendering="optimizeQuality"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      class="bc-svg"
+                    >
+                      <path
+                        d="M307.3 27.2C421.3 26 512.6 70.4 581.2 160.6 637.5 242.6 654.1 332.1 631.1 429.20000000000005 604.3000000000001 524.2 546.9 593.7 458.90000000000003 637.8000000000001 422.3 654.6 383.90000000000003 664.9000000000001 343.80000000000007 668.5000000000001 449.50000000000006 678.6000000000001 531.8000000000001 727.3000000000001 590.8000000000001 814.8000000000002 644.4000000000001 903.1000000000001 655.2 996.5000000000002 623.4000000000001 1094.9 586.5000000000001 1191.9 519.2 1257.9 421.5000000000001 1293 317.5000000000001 1324.3 220.90000000000012 1309.2 131.80000000000013 1247.9 46.4 1182.9 2.6 1096.4 0.3 988.4 2.7 879.9 46.8 793.1 132.7 728 182.1 693 237.1 673.2 297.7 668.5 184.7 656.7 99.19999999999999 602.5 41.099999999999966 505.9-2.400000000000034 425.2-11.400000000000034 340.79999999999995 14.199999999999967 252.59999999999997 47.89999999999997 152.69999999999996 113.89999999999998 83.79999999999995 212.29999999999995 45.89999999999998 243.19999999999996 35.299999999999976 274.9 29.099999999999977 307.29999999999995 27.199999999999978Z"
+                      ></path>
+                      <path
+                        d="M948.4 27.2C1062.5 26 1153.8 70.4 1222.3 160.5 1278.6 242.5 1295.2 332 1272.2 429.1 1245.4 524.1 1188 593.6 1100 637.7 1063.4 654.5 1025 664.8000000000001 984.9 668.4000000000001 1090.6 678.5000000000001 1172.9 727.2 1231.9 814.7 1285.5 903 1296.3000000000002 996.4000000000001 1264.5 1094.8000000000002 1227.6 1191.8000000000002 1160.3 1257.8000000000002 1062.6 1292.9 958.5999999999999 1324.2 861.9999999999999 1309.1000000000001 772.8999999999999 1247.8000000000002 687.4999999999999 1182.7000000000003 643.6999999999998 1096.3000000000002 641.4999999999999 988.3000000000002 643.8 879.9 688 793.1 773.9 728 823.3 693 878.3 673.2 938.9 668.5 825.9 656.7 740.4 602.5 682.3 505.9 638.8 425.2 629.8 340.79999999999995 655.4 252.59999999999997 689.1 152.69999999999996 755.1 83.79999999999995 853.5 45.89999999999998 884.4 35.299999999999976 916.1 29.099999999999977 948.4 27.199999999999978Z"
+                      ></path>
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="921.18 2110.47 1282.32 1336.04"
+                      shape-rendering="geometricPrecision"
+                      text-rendering="geometricPrecision"
+                      image-rendering="optimizeQuality"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      class="bc-svg"
+                    >
+                      <path
+                        d="M1241.5 2110.5C1360.4 2109.2 1455.57 2155.54 1527 2249.5 1585.69 2334.95 1603.02 2428.29 1579 2529.5 1551.11 2628.51 1491.27 2701.01 1399.5 2747 1361.35 2764.54 1321.35 2775.2 1279.5 2779 1389.69 2789.48 1475.52 2840.32 1537 2931.5 1592.84 3023.52 1604.17 3120.86 1571 3223.5 1532.55 3324.62 1462.38 3393.45 1360.5 3430 1252.09 3462.6 1151.43 3446.93 1058.5 3383 969.512 3315.19 923.845 3225.03 921.5 3112.5 923.968 2999.39 969.968 2908.89 1059.5 2841 1110.97 2804.51 1168.3 2783.84 1231.5 2779 1113.75 2766.75 1024.58 2710.25 964 2609.5 918.656 2525.4 909.323 2437.4 936 2345.5 971.114 2241.39 1039.95 2169.55 1142.5 2130 1174.74 2118.92 1207.74 2112.42 1241.5 2110.5Z"
+                      ></path>
+                      <path
+                        d="M2196.5 2113.5H2203.5V3443.5C1993.73 3434.2 1823.57 3348.2 1693 3185.5 1575.31 3027.38 1532.97 2850.71 1566 2655.5 1602.15 2477.18 1693.98 2335.68 1841.5 2231 1948.54 2158.15 2066.87 2118.99 2196.5 2113.5Z"
+                      ></path>
+                    </svg>
+                  </div>
                 </div>
                 <h2 class="ani9">web</h2>
               </div>
@@ -320,51 +365,145 @@
                   <div class="black"></div>
                 </div>
               </div>
+              <div class="mobile_box">
+                <div class="btn_box">
+                  <button class="lb">
+                    <img src="./img/main/arrow_l.svg" alt="left" />
+                  </button>
+                  <button class="rb">
+                    <img src="./img/main/arrow.svg" alt="right" />
+                  </button>
+                </div>
+                <div class="card_list">
+                  <div class="card first">
+                    <div class="icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1282.32 1282.32"
+                        class="bc-svg"
+                      >
+                        <path
+                          d="M923.66 461.83C923.66 206.77 716.89 0 461.83 0S0 206.77 0 461.83 206.77 923.66 461.83 923.66V461.83Z"
+                        ></path>
+                        <path
+                          d="M923.66 461.83C923.66 716.89 716.89 923.66 461.83 923.66V1282.32H1282.32V461.83Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="text_box">
+                      <h3 class="title">Function-First Experience</h3>
+                      <p class="text">
+                        We believe that utility and function are foremost in
+                        development. Our crafting of effortless, well-polished
+                        websites starts with our keen understanding of that
+                        site's purpose.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card second">
+                    <div class="icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1282.32 1282.56"
+                        class="bc-svg"
+                      >
+                        <path
+                          d="M0 641.28C-0.07 995.38 286.94 1282.49 641 1282.55S1282.21 995.6099999999999 1282.28 641.55V641.3199999999999C1282.38 287.17 995.38 0.03 641.27 0.03S0.06 286.94 0 641.03V641.27"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="text_box">
+                      <h3 class="title">Effortless Precision</h3>
+                      <p class="text">
+                        We craft performant modules that come together quickly
+                        to form the foundation of a project. This bauhaus
+                        approach means we work efficiently at a high standard,
+                        focused on the needs of the client.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card third">
+                    <div class="icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1282.33 1301.09"
+                        class="bc-svg"
+                      >
+                        <path
+                          d="M0.03 643.07H641.15C637.55 290.16 352.68 4.64 0.03 0Z"
+                        ></path>
+                        <path
+                          d="M641.21 643.07H1282.33C1278.74 290.16 993.86 4.64 641.21 0Z"
+                        ></path>
+                        <path
+                          d="M0.03 1301.09H641.12C637.52 948.18 352.65 662.66 0.03 658.02Z"
+                        ></path>
+                        <path
+                          d="M641.18 1301.09H1282.3C1278.7 948.1799999999998 993.8299999999999 662.66 641.18 658.0199999999999Z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="text_box">
+                      <h3 class="title">Art and Technology in Harmony</h3>
+                      <p class="text">
+                        We work with an emphasis on function but with the
+                        sensibility of design. Our approach pairs technical
+                        acumen with an understanding of user experience and
+                        human-centric UX/UI design.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card blank"></div>
+                </div>
+              </div>
+              <div></div>
             </div>
             <div class="middle">
               <h2 class="title">Our services</h2>
               <div class="hover_box">
-                <div class="card first">
-                  <div class="title_box">
-                    <h3 class="title">All-In-One<br />(AIO) Service</h3>
-                    <img height="30" src="./img/main/arrow.svg" alt="arrow" />
+                <div>
+                  <div class="card first">
+                    <div class="title_box">
+                      <h3 class="title">All-In-One<br />(AIO) Service</h3>
+                      <img height="30" src="./img/main/arrow.svg" alt="arrow" />
+                    </div>
+                    <div class="text_box">
+                      <p class="text">
+                        With our AIO service, we're able to handle one-off
+                        projects with a comprehensive package of consultation,
+                        design, development, and deployment.
+                      </p>
+                    </div>
+                    <div class="black"></div>
                   </div>
-                  <div class="text_box">
-                    <p class="text">
-                      With our AIO service, we're able to handle one-off
-                      projects with a comprehensive package of consultation,
-                      design, development, and deployment.
-                    </p>
+                  <div class="card second">
+                    <div class="title_box">
+                      <h3 class="title">Project-Based Development</h3>
+                      <img height="30" src="./img/main/arrow.svg" alt="arrow" />
+                    </div>
+                    <div class="text_box">
+                      <p class="text">
+                        Ideal for design studios in need of development, we
+                        transform creative visions into tangible web products on
+                        a per-project basis, including deployment.
+                      </p>
+                    </div>
+                    <div class="black"></div>
                   </div>
-                  <div class="black"></div>
-                </div>
-                <div class="card second">
-                  <div class="title_box">
-                    <h3 class="title">Project-Based Development</h3>
-                    <img height="30" src="./img/main/arrow.svg" alt="arrow" />
+                  <div class="card third">
+                    <div class="title_box">
+                      <h3 class="title">Scalable Dev Partnership</h3>
+                      <img height="30" src="./img/main/arrow.svg" alt="arrow" />
+                    </div>
+                    <div class="text_box">
+                      <p class="text">
+                        With our retainer service, clients receive a dedicated
+                        web development team that handles development,
+                        deployment, and scales with their needs.
+                      </p>
+                    </div>
+                    <div class="black"></div>
                   </div>
-                  <div class="text_box">
-                    <p class="text">
-                      Ideal for design studios in need of development, we
-                      transform creative visions into tangible web products on a
-                      per-project basis, including deployment.
-                    </p>
-                  </div>
-                  <div class="black"></div>
-                </div>
-                <div class="card third">
-                  <div class="title_box">
-                    <h3 class="title">Scalable Dev Partnership</h3>
-                    <img height="30" src="./img/main/arrow.svg" alt="arrow" />
-                  </div>
-                  <div class="text_box">
-                    <p class="text">
-                      With our retainer service, clients receive a dedicated web
-                      development team that handles development, deployment, and
-                      scales with their needs.
-                    </p>
-                  </div>
-                  <div class="black"></div>
                 </div>
                 <div class="card blank">
                   <div class="icon">
@@ -385,6 +524,7 @@
                     </svg>
                   </div>
                   <a href="#">VIEW ALL SERVICES</a>
+                  <img src="./img/main/arrow.svg" alt="arrow" />
                 </div>
               </div>
             </div>
@@ -445,6 +585,113 @@
                     manner.
                   </p>
                   <a class="more">READ MORE</a>
+                  <div class="bg"></div>
+                </div>
+              </div>
+              <div class="mobile_box">
+                <div class="tab first">
+                  <div class="wrap">
+                    <div class="text_box">
+                      <h3 class="title">"Highly satisfied..."</h3>
+                      <p class="text">Jakub Podgorny @ Conference of Nothing</p>
+                    </div>
+                    <div class="icon">
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="bc-svg"
+                      >
+                        <path
+                          d="M12 5v14M5 12h14"
+                          stroke="#000"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="body_text">
+                    Highly satisfied. <strong>studio bauhaus</strong> provided
+                    an excellent service throughout our first year in touch. All
+                    deadlines were fulfilled and the user experience of the
+                    final product is according to the highest standards. No
+                    misunderstandings, all wishes were completed and if there
+                    was something to correct or change, it was done within
+                    reasonable time for all sides.
+                  </p>
+                </div>
+                <div class="tab second">
+                  <div class="wrap">
+                    <div class="text_box">
+                      <h3 class="title">"Exceeded our expectations..."</h3>
+                      <p class="text">Eric Stevenson @ Andel Sound</p>
+                    </div>
+                    <div class="icon">
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="bc-svg"
+                      >
+                        <path
+                          d="M12 5v14M5 12h14"
+                          stroke="#000"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="body_text">
+                    <strong>studio bauhaus</strong> has exceeded our
+                    expectations with design and overall solution. They
+                    completely met our desire to represent our studio with
+                    artistic looking website, so we can perfectly deliver the
+                    message to our potential customers of what we do and how we
+                    do it.
+                  </p>
+                </div>
+                <div class="tab third">
+                  <div class="wrap">
+                    <div class="text_box">
+                      <h3 class="title">"Timely, Professional, and..."</h3>
+                      <p class="text">Adam Dudek @ Prague Quadrennial</p>
+                    </div>
+                    <div class="icon">
+                      <svg
+                        width="24"
+                        height="24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="bc-svg"
+                      >
+                        <path
+                          d="M12 5v14M5 12h14"
+                          stroke="#000"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="body_text">
+                    I worked with <strong>studio bauhaus</strong> on a website
+                    for the <strong>Prague Quadrennial 2023</strong>, an
+                    international festival of scenography and performance
+                    design. Despite all the changes and extensions that went
+                    beyond the scope of the original – already quite robust –
+                    project brief, Luke Hawkins and his team at studio bauhaus
+                    always managed to deliver not just novelty looking site, but
+                    also a well-structured one, answering all the needs the
+                    project had. All in a timely, professional, and very human
+                    manner.
+                  </p>
                 </div>
               </div>
             </div>
