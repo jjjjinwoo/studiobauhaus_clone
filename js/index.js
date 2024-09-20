@@ -61,7 +61,7 @@ let sec4Top = sec3Top + document.querySelector(".sec3 .up").offsetHeight;
 let sec5Top = sec4Top + document.querySelector(".sec3 .middle").offsetHeight;
 let sec6BlackHeight = document.querySelector(".sec4 .black_box").offsetHeight;
 let sec6Top =
-  sec4Top + document.querySelector(".sec4").offsetHeight + sec6BlackHeight + 5;
+  sec4Top + document.querySelector(".sec4").offsetHeight + sec6BlackHeight;
 
 for (var i = 0; i < sidebarBtn.length; i++) {
   sidebarBtn[i].addEventListener("click", function () {
@@ -369,54 +369,111 @@ $(".sec3 .mobile_box .btn_box .lb").click(function () {
 
 // 섹션4
 
-ScrollTrigger.create({
-  trigger: ".sec4",
-  start: "0 top",
-  end: "bottom bottom",
-  pin: ".sec4 .title",
-  // markers: true,
-});
+ScrollTrigger.matchMedia({
+  "(min-width: 768px)": function () {
+    ScrollTrigger.create({
+      trigger: ".sec4",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".sec4 .title",
+      // markers: true,
+    });
 
-gsap.to(".sec4 .title .up .hello", {
-  scrollTrigger: {
-    trigger: ".sec4 .white_box",
-    start: "0% 0%",
-    end: "100% 100%",
-    scrub: 1,
-    // markers: true,
-  },
-  transform: "translateX(0vw)",
-});
+    gsap.to(".sec4 .title .up .hello", {
+      scrollTrigger: {
+        trigger: ".sec4 .white_box",
+        start: "0% 0%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "translateX(0vw)",
+    });
 
-gsap.to(".sec4 .title .up .studio", {
-  scrollTrigger: {
-    trigger: ".sec4 .white_box",
-    start: "0% 0%",
-    end: "100% 100%",
-    scrub: 1,
-    // markers: true,
-  },
-  transform: "translateX(0vw)",
-});
+    gsap.to(".sec4 .title .up .studio", {
+      scrollTrigger: {
+        trigger: ".sec4 .white_box",
+        start: "0% 0%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "translateX(0vw)",
+    });
 
-gsap.to(".sec4 .title .down", {
-  scrollTrigger: {
-    trigger: ".sec4 .white_box",
-    start: "0% 0%",
-    end: "100% 100%",
-    scrub: 1,
-    // markers: true,
-  },
-  transform: "scale(1)",
-});
+    gsap.to(".sec4 .title .down", {
+      scrollTrigger: {
+        trigger: ".sec4 .white_box",
+        start: "0% 0%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "scale(1)",
+    });
 
-gsap.to(".sec4 .title", {
-  scrollTrigger: {
-    trigger: ".sec4 .black_box",
-    start: "0% 100%",
-    end: "100% 100%",
-    scrub: 1,
-    // markers: true,
+    gsap.to(".sec4 .title", {
+      scrollTrigger: {
+        trigger: ".sec4 .black_box",
+        start: "0% 100%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "translateY(160px)",
+    });
   },
-  transform: "translateY(160px)",
+  "(max-width: 767px)": function () {
+    ScrollTrigger.create({
+      trigger: ".sec4",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".sec4 .title",
+      // markers: true,
+    });
+
+    gsap.to(".sec4 .title .up .hello", {
+      scrollTrigger: {
+        trigger: ".sec4 .white_box",
+        start: "0% 0%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "translateX(0vw)",
+    });
+
+    gsap.to(".sec4 .title .up .studio", {
+      scrollTrigger: {
+        trigger: ".sec4 .white_box",
+        start: "0% 0%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "translateX(0vw)",
+    });
+
+    gsap.to(".sec4 .title .down", {
+      scrollTrigger: {
+        trigger: ".sec4 .white_box",
+        start: "0% 0%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "scale(1)",
+    });
+
+    gsap.to(".sec4 .title", {
+      scrollTrigger: {
+        trigger: ".sec4 .black_box",
+        start: "0% 100%",
+        end: "100% 100%",
+        scrub: 1,
+        // markers: true,
+      },
+      transform: "translateY(160px)",
+    });
+  },
 });

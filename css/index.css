@@ -1048,6 +1048,7 @@ header.menu {
   width: calc(100% - 44px);
   min-height: 100vh;
   padding-left: 44px;
+  overflow: hidden;
 }
 .sec4 .container {
   position: relative;
@@ -1062,7 +1063,6 @@ header.menu {
   height: 32vw;
   overflow: hidden;
   position: absolute;
-  top: 300px;
   display: flex;
   flex-direction: column;
   gap: 1vw;

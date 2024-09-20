@@ -1095,6 +1095,7 @@ header.menu {
   width: calc(100% - 44px);
   min-height: calc(100vh);
   padding-left: 44px;
+  overflow: hidden;
   .container {
     position: relative;
     height: 100%;
@@ -1106,7 +1107,7 @@ header.menu {
         height: 32vw;
         overflow: hidden;
         position: absolute;
-        top: 300px;
+        // top: 300px;
         display: flex;
         flex-direction: column;
         gap: 1vw;
